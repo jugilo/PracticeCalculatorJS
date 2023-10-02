@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora Prueba</title>
+</head>
+<body>
+    <div class="calculadora">
+        <h2 id="acomulado"></h2>
+        <h2 id="espacio"></h2>
+        <br>
+        <div class="panel">
+            <button onclick="borrar()" class="especial" value="1">AC</button>
+            <button onclick="agregarNumero(this)" class="especial" value="2"> +/- </button>
+            <button onclick="agregarNumero(this)" class="especial" value="%">%</button>
+            <button onclick="agregarOperador(this)" class="signo" value="/">÷</button>
+            <br>
+            <button onclick="agregarNumero(this)" class="numero" value="7">7</button>
+            <button onclick="agregarNumero(this)" class="numero" value="8">8</button>
+            <button onclick="agregarNumero(this)" class="numero" value="9">9</button>
+            <button onclick="agregarOperador(this)" class="signo" value="*">x</button>
+            <br>
+            <button onclick="agregarNumero(this)" class="numero" value="4">4</button>
+            <button onclick="agregarNumero(this)" class="numero" value="5">5</button>
+            <button onclick="agregarNumero(this)" class="numero" value="6">6</button>
+            <button onclick="agregarOperador(this)" class="signo" value="-">-</button>
+            <br>
+            <button onclick="agregarNumero(this)" class="numero" value="1">1</button>
+            <button onclick="agregarNumero(this)" class="numero" value="2">2</button>
+            <button onclick="agregarNumero(this)" class="numero" value="3">3</button>
+            <button onclick="agregarOperador(this)" class="signo" value="+">+</button>
+            <br>
+            <button onclick="agregarNumero(this)" id="cero" value="0">0</button>
+            <button onclick="agregarNumero(this)" class="numero" value=",">,</button>
+            <button onclick="resultado()" value="borrar">=</button>
+        </div>
+    </div>
+</body>
+<script script src="index.js"></script>
+</html>
