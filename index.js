@@ -33,11 +33,9 @@ const agregarNumero = (boton) =>{
 const borrar = () =>{
     VALOR_ACOMULADO.pop()
     const espacio = document.getElementById('espacio')
-    let result = espacio.textContent
-    let array = result.split('')
-    array.pop()
-    const res = array.join("")
-    espacio.innerHTML = res
+    let result = espacio.textContent.split('')
+    result.pop()
+    espacio.innerHTML = result.join("")
     console.log(VALOR_ACOMULADO)
     if(espacio.innerHTML === ''){
         const acum = document.getElementById('acomulado')
@@ -49,14 +47,74 @@ const borrar = () =>{
 
 const resultado = () => {
     const id = document.getElementById('espacio')
+    const acomulado = document.getElementById('acomulado')
     const arrayEspacio = id.textContent.split('')
+    
     if(arrayEspacio[0]==='+' || arrayEspacio[0]==='-' || arrayEspacio[0]==='*' || arrayEspacio[0]==='/'){
         alert("Error en la operacion, tienes un operador al final de la expresión")
         id.textContent('')
     }else if(arrayEspacio[arrayEspacio.length-1]==='+' || arrayEspacio[arrayEspacio.length-1]==='-' || arrayEspacio[arrayEspacio.length-1]==='*' || arrayEspacio[arrayEspacio.length-1]==='/'){
         alert("Error en la operacion, tienes un operador al final de la expresión")
     }
-    const arraySignos = extraerValoresClase(document.getElementsByClassName('signo'))
-    console.log(arrayEspacio)
-    console.log(arraySignos)
+    let PrimeraParte = []
+    let SegundaParte = []
+    let Operador = 0
+    VALOR_ACOMULADO.forEach(x =>{
+        console.log(x)
+        
+       if(x==="*" || x==="/" || x==="+" || x==="-"){
+            Operador = x
+       }else if(Operador === 0){
+        PrimeraParte.push(x)
+       }else{
+        SegundaParte.push(x)
+       }
+      
+
+    })
+    const stringPrimeraParte = parseInt(PrimeraParte.join(""))
+    const stringSegundaParte = parseInt(SegundaParte.join(""))
+    console.log(stringPrimeraParte)
+    console.log(stringSegundaParte)
+    let resultado = 0
+    switch(Operador){
+        case '+':
+            VALOR_ACOMULADO = []
+            resultado = stringPrimeraParte + stringSegundaParte
+            espacio.innerHTML = resultado
+            resultado = resultado + ''
+            VALOR_ACOMULADO = resultado.split('')
+            console.log(VALOR_ACOMULADO)
+            acomulado.innerHTML = ''
+            break
+        case '-':
+            VALOR_ACOMULADO = []
+            resultado = stringPrimeraParte - stringSegundaParte
+            espacio.innerHTML = resultado
+            resultado = resultado + ''
+            VALOR_ACOMULADO = resultado.split('')
+            console.log(VALOR_ACOMULADO)
+            acomulado.innerHTML = ''
+            break
+        
+        case '*':
+            VALOR_ACOMULADO = []
+            resultado = stringPrimeraParte * stringSegundaParte
+            espacio.innerHTML = resultado
+            resultado = resultado + ''
+            VALOR_ACOMULADO = resultado.split('')
+            console.log(VALOR_ACOMULADO)
+            acomulado.innerHTML = ''
+            break
+
+        case '/':
+            VALOR_ACOMULADO = []
+            resultado = stringPrimeraParte / stringSegundaParte
+            espacio.innerHTML = resultado
+            resultado = resultado + ''
+            VALOR_ACOMULADO = resultado.split('')
+            console.log(VALOR_ACOMULADO)
+            acomulado.innerHTML = ''
+            break
+    }
 }
